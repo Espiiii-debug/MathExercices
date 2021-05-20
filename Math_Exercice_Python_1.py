@@ -11,9 +11,6 @@ class ProgressBar:
     
     def update(self, val):
         import sys
-        # format
-        if val > self.valmax: val = self.valmax
-        
         # process
         perc  = round((float(val) / float(self.valmax)) * 100)
         scale = 100.0 / float(self.maxbar)
@@ -22,6 +19,7 @@ class ProgressBar:
         # render 
         out = '\r %20s [%s%s] %3d %%' % (self.title, '=' * bar, ' ' * (self.maxbar - bar), perc)
         sys.stdout.write(out)
+        sys.stdout.flush()
 
 from math import *
 from random import randint
