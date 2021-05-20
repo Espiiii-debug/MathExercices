@@ -11,17 +11,17 @@ def pickRandomNumber(min, max) :
     return randomNumber
 
 # Additionne 3 nombres aléatoires
-def calculNombre(min, max) :
+def calculNombre(min, max, nombreAddition) :
     a = 0
     for i in range (3) :
         a = a + pickRandomNumber(min, max)
     return a
 
 # Répete le l'opération calculNombre() un nombre de fois defini par l'utilisateur et stock chaque résultat dans une liste.
-def getNumberByLoop(loopNumber, min, max) :
+def getNumberByLoop(loopNumber, min, max, nombreAddition) :
     result = []
     for i in range (loopNumber) :
-        result.append(calculNombre(min, max))
+        result.append(calculNombre(min, max, nombreAddition))
     
         
     return result
@@ -63,12 +63,15 @@ def main() :
         # Initialisation du nombre maximum pouvant être tiré
         s = int(input("Entrez le nombre maximum pouvant être tiré : "))
         
+        # Initialisation du nombre fois d'addition de nombre
+        nombreAddition = int(input("Entrez le nombre de tirage par iteration : "))
+
         # Vérification que le maximum soit superieur au minimum ou minimum + ou = à 0
-        if((valueOfMinMaxCorrect(c, s)) or min < 0):
+        if((valueOfMinMaxCorrect(c, s)) or (c < 0)):
             break
         print("Le nombre saisie doit-être positif et le chiffre minimum positif ou null !")
     
-    listNumber = getNumberByLoop(a, c, s)
+    listNumber = getNumberByLoop(a, c, s, nombreAddition)
     
     nombreDappartion = checkHowManyNumberRepeatInTheList(b, listNumber)
     
